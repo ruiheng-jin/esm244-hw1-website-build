@@ -1,0 +1,18 @@
+name: "."
+title: "Ruiheng Jin"
+description: |
+  Ruiheng Jin
+output_dir: "docs"
+theme: postcards.css
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Portfolio"
+      menu:
+        - text: "Text Analysis Example"
+        - href: text_analysis.html
+    - text: "Blog"
+      href: blog.html
+output: distill::distill_article
+
