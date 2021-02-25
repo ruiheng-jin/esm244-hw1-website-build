@@ -112,12 +112,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["welcome"]},{"type":"character","attributes":{},"value":["A short description of the post."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Unknown"]}]}]},{"type":"character","attributes":{},"value":["02-26-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["Code"]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["welcome"]},{"type":"character","attributes":{},"value":["A short description of the post."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Unknown"]}]}]},{"type":"character","attributes":{},"value":["02-26-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["welcome_files/anchor-4.2.2/anchor.min.js","welcome_files/bowser-1.9.3/bowser.min.js","welcome_files/distill-2.2.21/template.v2.js","welcome_files/figure-html5/unnamed-chunk-3-1.png","welcome_files/figure-html5/unnamed-chunk-5-1.png","welcome_files/jquery-1.11.3/jquery.min.js","welcome_files/popper-2.6.0/popper.min.js","welcome_files/tippy-6.2.7/tippy-bundle.umd.min.js","welcome_files/tippy-6.2.7/tippy-light-border.css","welcome_files/tippy-6.2.7/tippy.css","welcome_files/tippy-6.2.7/tippy.umd.min.js","welcome_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["welcome_files/anchor-4.2.2/anchor.min.js","welcome_files/bowser-1.9.3/bowser.min.js","welcome_files/distill-2.2.21/template.v2.js","welcome_files/jquery-1.11.3/jquery.min.js","welcome_files/popper-2.6.0/popper.min.js","welcome_files/tippy-6.2.7/tippy-bundle.umd.min.js","welcome_files/tippy-6.2.7/tippy-light-border.css","welcome_files/tippy-6.2.7/tippy.css","welcome_files/tippy-6.2.7/tippy.umd.min.js","welcome_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2384,6 +2384,8 @@ d-appendix d-footnote-list a.footnote-backlink {
 </div>
 <div class="nav-right">
 <a href="../../index.html">Home</a>
+<a href="../../cf_project.html">Current Projects</a>
+<a href="../../blog.html">Blog</a>
 <div class="nav-dropdown">
 <button class="nav-dropbtn">
 Portfolio
@@ -2391,11 +2393,9 @@ Portfolio
 <span class="down-arrow">&#x25BE;</span>
 </button>
 <div class="nav-dropdown-content">
-<span class="nav-dropdown-header">Text Analysis Example</span>
-<a href="../../text_analysis.html"></a>
+<a href="../../a3_task3_jin_ruiheng.html">Text Analysis in R</a>
 </div>
 </div>
-<a href="../../blog.html">Blog</a>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -2418,134 +2418,6 @@ Portfolio
 </div>
 
 <div class="d-article">
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>Code</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>none_text</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://docs.ropensci.org/pdftools/reference/pdftools.html'>pdf_text</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"."</span>, <span class='st'>"and_then_there_were_none.pdf"</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>Code</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>none_tidy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span><span class='va'>none_text</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># each line is a page</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>text_full <span class='op'>=</span> <span class='fu'>str_split</span><span class='op'>(</span><span class='va'>none_text</span>, pattern <span class='op'>=</span> <span class='st'>"\\n"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># add an additional \ # each line is an element in a page element</span>
-  <span class='fu'>unnest</span><span class='op'>(</span><span class='va'>text_full</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># each line has a line in the data frame</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>text_full<span class='op'>=</span>  <span class='fu'>str_trim</span><span class='op'>(</span><span class='va'>text_full</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># trim off excess spaces</span>
-
-
-<span class='va'>none_df</span> <span class='op'>&lt;-</span> <span class='va'>none_tidy</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>slice</span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>chapter <span class='op'>=</span> <span class='fu'>case_when</span><span class='op'>(</span>
-    <span class='fu'>str_detect</span><span class='op'>(</span><span class='va'>text_full</span>, pattern <span class='op'>=</span> <span class='st'>"Chapter"</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>text_full</span>, <span class='co'># if has Chapter, then repeat the value in column text_full</span>
-    <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='cn'>NA_character_</span> <span class='co'># if anything else is TRUE, then populate the new column with NA</span>
-  <span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>fill</span><span class='op'>(</span><span class='va'>chapter</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>separate</span><span class='op'>(</span>col <span class='op'>=</span> <span class='va'>chapter</span>, into <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"ch"</span>, <span class='st'>"no"</span><span class='op'>)</span>, sep <span class='op'>=</span> <span class='st'>" "</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>chapter <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>no</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>none_tokens</span> <span class='op'>&lt;-</span> <span class='va'>none_df</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens</a></span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>text_full</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># changing resolution from line to words</span>
-  <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>none_text</span><span class='op'>)</span>
-
-<span class='va'>none_wordcount</span> <span class='op'>&lt;-</span> <span class='va'>none_tokens</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>count</span><span class='op'>(</span><span class='va'>chapter</span>, <span class='va'>word</span><span class='op'>)</span> <span class='co'># after this, want to exclude "stop words"</span>
-</code></pre>
-</div>
-</details>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>Code</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># remove stop words</span>
-<span class='va'>none_nonstop_words</span> <span class='op'>&lt;-</span> <span class='va'>none_tokens</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>anti_join</span><span class='op'>(</span><span class='va'>stop_words</span><span class='op'>)</span> <span class='co'># telling r what we don't want to include in none_tokens</span>
-
-<span class='va'>nonstop_count</span> <span class='op'>&lt;-</span> <span class='va'>none_nonstop_words</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>count</span><span class='op'>(</span><span class='va'>chapter</span>, <span class='va'>word</span><span class='op'>)</span>
-
-<span class='co'># find top 5 words by chapter </span>
-<span class='va'>top_5_words</span> <span class='op'>&lt;-</span> <span class='va'>nonstop_count</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>chapter</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>arrange</span><span class='op'>(</span><span class='op'>-</span><span class='va'>n</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>slice</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>
-
-<span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>top_5_words</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>word</span>, y <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_col</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#C74343"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>chapter</span>, scales <span class='op'>=</span> <span class='st'>"free"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>coord_flip</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>""</span>,
-       y <span class='op'>=</span> <span class='st'>"Number of occurrences"</span>,
-       title <span class='op'>=</span> <span class='st'>"Most Frequently Used Words in 'And Then There Were None' \nby Chapter"</span>,
-       caption <span class='op'>=</span> <span class='st'>"Christie, Agatha. 1939, And Then There Were None."</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
-  <span class='fu'>theme</span><span class='op'>(</span>
-    plot.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#39354F"</span>, colour <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>,
-    panel.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#515076"</span>, colour <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>,
-    axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"#F3CA24"</span>, size <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span>,
-    title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"#F3CA24"</span>, size <span class='op'>=</span> <span class='fl'>13</span><span class='op'>)</span>,
-    panel.grid <span class='op'>=</span> <span class='fu'>element_line</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
-    strip.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"#F3CA24"</span><span class='op'>)</span>,
-    plot.caption <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<p><img src="welcome_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>Code</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># sentiment analysis</span>
-<span class='va'>none_afinn</span> <span class='op'>&lt;-</span> <span class='va'>none_nonstop_words</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>inner_join</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/get_sentiments.html'>get_sentiments</a></span><span class='op'>(</span><span class='st'>"afinn"</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>afinn_counts</span> <span class='op'>&lt;-</span> <span class='va'>none_afinn</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>count</span><span class='op'>(</span><span class='va'>chapter</span>, <span class='va'>value</span><span class='op'>)</span>
-
-<span class='va'>afinn_means</span> <span class='op'>&lt;-</span> <span class='va'>none_afinn</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>chapter</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>summarize</span><span class='op'>(</span>mean_afinn <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>value</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>Code</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>none_nrc</span> <span class='op'>&lt;-</span> <span class='va'>none_nonstop_words</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>inner_join</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/get_sentiments.html'>get_sentiments</a></span><span class='op'>(</span><span class='st'>"nrc"</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='va'>none_nrc_count</span> <span class='op'>&lt;-</span> <span class='va'>none_nrc</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>count</span><span class='op'>(</span><span class='va'>chapter</span>, <span class='va'>sentiment</span><span class='op'>)</span>
-
-<span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>none_nrc_count</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>sentiment</span>, y <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_col</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#C74343"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>chapter</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>coord_flip</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Number of occurrences"</span>,
-       x <span class='op'>=</span> <span class='st'>"Sentiment"</span>,
-       title <span class='op'>=</span> <span class='st'>"Sentiment Analysis for 'And Then There Were None' \nby Chapter"</span>,
-       caption <span class='op'>=</span> <span class='st'>"Christie, Agatha. 1939, And Then There Were None."</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
-  <span class='fu'>theme</span><span class='op'>(</span>
-    plot.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#39354F"</span>, colour <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>,
-    panel.background <span class='op'>=</span> <span class='fu'>element_rect</span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"#515076"</span>, colour <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>,
-    axis.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"#F3CA24"</span>, size <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span>,
-    title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"#F3CA24"</span>, size <span class='op'>=</span> <span class='fl'>13</span><span class='op'>)</span>,
-    panel.grid <span class='op'>=</span> <span class='fu'>element_line</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>,
-    strip.text <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"#F3CA24"</span><span class='op'>)</span>,
-    plot.caption <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<p><img src="welcome_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
-</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

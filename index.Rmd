@@ -1,6 +1,6 @@
 ---
 title: "Ruiheng Jin"
-image: "tobi.jpg"
+image: "ruiheng.PNG"
 site: distill::distill_website
 links:
   - label: LinkedIn
@@ -16,6 +16,4 @@ output:
 
 ---
  
-I am a classically trained data scientist living in the San Francisco Bay Area. 
-Currently I work on the Oculus team at Facebook. I love talking about baseball, 
-true crime podcasts, and causal inference.
+I am an environmental management master's student at the Bren School at UCSB. My interests include carbon accounting and decarbonization in the power sector. In my free time, I like to do DIYs and skateboard.

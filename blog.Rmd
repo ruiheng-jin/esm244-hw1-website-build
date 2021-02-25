@@ -1,11 +1,4 @@
 ---
-title: "Blog"
-listing: posts 
-author: "Ruihieng Jin"
-date: "2021/2/26"
-output: html_document
+title: "Blog"  # any name you want here
+listing: posts # do this exactly
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
